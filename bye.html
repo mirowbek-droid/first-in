@@ -1,0 +1,63 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>First In - removed</title><meta name="robots" content="noindex"><style>
+:root{--g:#01754f;--ink:#1f2328;--dim:#5e6672;--line:#dfe2e6;--bg:#f6f8f7}
+*{box-sizing:border-box}body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+header{background:var(--g);color:#fff}.wrap{max-width:640px;margin:0 auto;padding:0 20px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+header a{color:#fff;text-decoration:none}.brand{font-weight:700;font-size:18px}
+main{padding-block:36px 56px}h1{font-size:28px;line-height:1.2;margin:0 0 10px}p{margin:0 0 14px}.lede{color:var(--dim)}
+fieldset{border:0;padding:0;margin:22px 0 0;display:grid;gap:8px}legend{font-weight:700;margin-bottom:8px}
+label.opt{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;cursor:pointer}
+label.opt:hover{background:var(--bg)}label.opt:has(input:checked){border-color:var(--g);background:#eef6f2}
+input[type=radio]{accent-color:var(--g);width:17px;height:17px;margin:0}
+textarea{width:100%;min-height:90px;margin-top:6px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;resize:vertical}
+.more{margin-top:18px;font-weight:700}
+button{margin-top:18px;height:42px;padding:0 20px;border:0;border-radius:21px;background:var(--g);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+button:disabled{opacity:.45;cursor:default}
+.note{font-size:14px;color:var(--dim);margin-top:14px}
+#done{display:none}#done.on{display:block}form.off{display:none}
+footer{border-top:1px solid var(--line);color:var(--dim);font-size:14px;padding-block:18px}a{color:var(--g)}
+</style></head><body><header><div class="wrap"><a class="brand" href="index.html">First In</a></div></header><main class="wrap">
+<h1>First In has been removed.</h1>
+<p class="lede">Nothing it stored is left in your browser. If you have ten seconds, one answer helps make it better for the next person.</p>
+<form id="f">
+<fieldset><legend>Why did you remove it?</legend></fieldset>
+<p class="more">Anything we could have done better? <span style="font-weight:400;color:var(--dim)">(optional)</span></p>
+<textarea name="more" maxlength="2000" placeholder="A sentence is plenty."></textarea>
+<button type="submit" disabled>Send</button>
+<p class="note">Anonymous: no email, no LinkedIn data, only what you choose here and the version you had.</p>
+</form>
+<div id="done"><p><strong>Thank you.</strong> That goes straight to the person who builds it.</p><p>Changed your mind? <a href="https://chromewebstore.google.com/detail/ofencficilmmgkoelbmglbegnaabhfmb">First In on the Chrome Web Store</a>.</p></div>
+</main><footer><div class="wrap">Not affiliated with, endorsed by or sponsored by LinkedIn Corporation.</div></footer>
+<script>
+// THE UNINSTALL SURVEY, added with 3.0 on 2026-10-05. background.js points
+// chrome.runtime.setUninstallURL here with ?v=<version>. The answers go to a
+// Google Form owned by mirow.bek@gmail.com ("First In - why did you remove
+// it?"), posted no-cors to its formResponse endpoint - a static site has no
+// server, and the form keeps the responses in his Drive. The ENTRY IDS below
+// were read off the published form; editing a question there can change them,
+// and then answers stop arriving with no error here (no-cors hides the reply).
+const FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSd2xYMW2p8l9OF1Zv-7-un0w8sawQwNvPVBgMgqpDZlxDLZnA/formResponse';
+const E = { why: 'entry.1423591275', more: 'entry.1188189933', ver: 'entry.498631126' };
+// The exact option texts on the form: a reason not in this list is rejected
+// by Google Forms.
+const WHY = ['I found a job', 'Counts were slow or missing', 'It broke or looked wrong on LinkedIn',
+  'I did not want to pay for the filters', 'Worried about my LinkedIn account',
+  'I only needed it for a short time', 'Something else'];
+const f = document.getElementById('f'), fs = f.querySelector('fieldset'), go = f.querySelector('button');
+for (const w of WHY) {
+  const l = document.createElement('label'); l.className = 'opt';
+  const r = Object.assign(document.createElement('input'), { type: 'radio', name: 'why', value: w });
+  r.onchange = () => { go.disabled = false; };
+  l.append(r, document.createTextNode(w)); fs.append(l);
+}
+const ver = (new URLSearchParams(location.search).get('v') || '').slice(0, 20);
+f.onsubmit = async (e) => {
+  e.preventDefault();
+  const why = f.querySelector('input[name=why]:checked');
+  if (!why) return;
+  go.disabled = true;
+  const body = new URLSearchParams({ [E.why]: why.value, [E.more]: f.more.value.trim(), [E.ver]: ver });
+  try { await fetch(FORM, { method: 'POST', mode: 'no-cors', body }); } catch (err) { /* thanked anyway: nothing to retry with */ }
+  f.className = 'off'; document.getElementById('done').className = 'on';
+};
+</script></body></html>

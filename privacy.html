@@ -10,7 +10,7 @@ p{margin:0 0 12px;max-width:65ch}.lede{font-size:19px;color:var(--dim)}ul{paddin
 .note{background:var(--bg);border-radius:10px;padding:14px 16px;max-width:65ch}
 footer{border-top:1px solid var(--line);color:var(--dim);font-size:14px;padding-block:18px}a{color:var(--g)}
 </style></head><body><header><div class="wrap"><a class="brand" href="index.html">First In</a><nav><a href="index.html">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav></div></header><main class="wrap"><h1>Privacy policy</h1>
-<p>Last updated 2026-10-04. Describes version 2.9.</p>
+<p>Last updated 2026-10-05. Describes version 3.0.</p>
 <h2>What the extension reads</h2>
 <p>On LinkedIn job search pages it reads the job cards already on your screen (title line, location line, labels such as &quot;Easy Apply&quot; or &quot;Viewed&quot;) and the applicant count of each job. To get a count it requests that job&#x27;s page from linkedin.com - LinkedIn&#x27;s public job page first, and your signed-in job page only when the public one gives no exact number. When you press Copy on a job, it requests that job's public page once more to copy its description to your clipboard.</p>
 <h2>What it stores</h2>
@@ -19,12 +19,14 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:14px;padding-
 <h2>What it sends, and to whom</h2>
 <p>Nothing about your LinkedIn activity is sent to the developer or to anyone else. The job counts, your filters and your settings never leave your browser. There are no analytics and no advertising.</p>
 <p>The extension contacts two sites:</p>
-<ul><li>linkedin.com, to read the job pages described above;</li><li>extensionpay.com, to check whether this installation has unlocked the paid filters. For that it sends a random key created when the extension is installed. The key is not linked to your LinkedIn account.</li></ul>
+<ul><li>linkedin.com, to read the job pages described above;</li><li>extensionpay.com, to check whether this installation has unlocked the paid filters and to show the current price. It does this only on LinkedIn job pages, and it sends a random key created by the extension. The key is not linked to your LinkedIn account. Like any web request, this one carries your IP address.</li></ul>
 <h2>If you buy the unlock</h2>
-<p>Payment is handled by ExtensionPay (extensionpay.com) and its payment processor, Stripe. They receive your email address and your payment details; the developer can see the email address and that a payment was made, never your card. The extension itself only learns whether you have paid. Your email is used to restore your purchase on another browser and for nothing else.</p>
+<p>Payment is handled by ExtensionPay (extensionpay.com) and its payment processor, Stripe. They receive your email address and your payment details; the developer can see the email address and that a payment was made, never your card. The extension keeps the answer it gets back - whether you have paid, and the email address the payment was made with - in Chrome&#x27;s extension storage, which Chrome may sync to your other browsers if you have Chrome sync turned on. Your email is used to restore your purchase on another browser and for nothing else.</p>
 <h2>What it never does</h2>
 <p>It does not apply to jobs, save or dismiss them, send messages, or change anything in your LinkedIn account. It does not read your profile, your messages or your contacts.</p>
 <h2>Removing your data</h2>
 <p>Uninstalling the extension deletes everything it stored.</p>
+<h2>If you uninstall it</h2>
+<p>Chrome opens a page on this site with one optional question: why you removed it. If you choose to answer, your answer, any comment you type and the extension&#x27;s version number are sent to a Google Form owned by the developer. Nothing else is sent - no email, no LinkedIn data - and nothing at all if you just close the page.</p>
 <h2>Contact</h2>
 <p>mirow.bek@gmail.com</p></main><footer><div class="wrap">Not affiliated with, endorsed by or sponsored by LinkedIn Corporation.</div></footer></body></html>
