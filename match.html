@@ -1,62 +1,14 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>How Match is scored - First In</title><style>
-:root{--g:#01754f;--b:#0a66c2;--ink:#1f2328;--dim:#5e6672;--line:#dfe2e6;--bg:#f6f8f7}
-*{box-sizing:border-box}body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
-header{background:var(--g);color:#fff}.wrap{max-width:860px;margin:0 auto;padding:0 20px}
-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
-header a{color:#fff;text-decoration:none}.brand{font-weight:700;font-size:18px}nav{display:flex;gap:18px;font-size:15px}
-main{padding-block:36px 56px}h1{font-size:34px;line-height:1.15;margin:0 0 12px}h2{font-size:20px;margin:32px 0 8px}
-p{margin:0 0 12px;max-width:65ch}.lede{font-size:19px;color:var(--dim)}ul{padding-left:20px;max-width:65ch}
-.note{background:var(--bg);border-radius:10px;padding:14px 16px;max-width:65ch}
-.beta{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:5px;background:#e8f1fb;color:var(--b);border:1px solid #b9d4f1;vertical-align:middle}
-table{border-collapse:collapse;max-width:65ch;width:100%;margin:8px 0 14px;font-size:15px}td,th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}th{color:var(--dim);font-weight:600}
-td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
-footer{border-top:1px solid var(--line);color:var(--dim);font-size:14px;padding-block:18px}a{color:var(--g)}
-</style></head><body><header><div class="wrap"><a class="brand" href="index.html">First In</a><nav><a href="index.html">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav></div></header><main class="wrap">
-<h1>How Match is scored <span class="beta">Beta</span></h1>
-<p class="lede">Match puts a score out of 100 on every LinkedIn job card. It checks your own LinkedIn profile against the job: your titles against the job title, your skills against the skills the job asks for, and your level against the job's level.</p>
-<p class="note">Match is in beta. The scoring rules are fixed and written below, and the score is worked out on your computer. Nothing from your profile is sent anywhere. It has not yet been checked against a large set of jobs graded by recruiters, so treat it as a sorting aid, not a verdict.</p>
-
-<h2>What it reads</h2>
-<ul>
-<li><b>Your profile</b>, once, when you press <i>Set up match</i>: the titles and descriptions on your own Experience page and the skills on your own Skills page. It is stored in your browser only. You can edit it in the First In box (target roles, add or remove skills) or delete it with <i>Forget it</i>.</li>
-<li><b>Each job</b>: LinkedIn's public page for that job, the same page First In already reads for the applicant count. It uses the title, LinkedIn's "Seniority level" line and the description.</li>
-</ul>
-
-<h2>The three parts</h2>
-<table><tr><th>Part</th><th>Points</th><th>What it compares</th></tr>
-<tr><td>Title</td><td class="n">up to 50</td><td>The job title against the roles you target. If you have not typed target roles, it uses your three most recent job titles.</td></tr>
-<tr><td>Skills</td><td class="n">up to 31</td><td>Skills the job description names against the skills on your profile.</td></tr>
-<tr><td>Level</td><td class="n">up to 19</td><td>The job's level (entry, mid, senior, lead or manager, director and above) against yours.</td></tr></table>
-<p>Pay, distance and how new the job is are <b>not</b> part of the score. A salary in the posting never moves it.</p>
-
-<h2>Title (50 points)</h2>
-<p>Each of your roles is compared with the job title, and the best one counts. Two checks run, and the higher result wins:</p>
-<ul>
-<li><b>Words.</b> Level and grade words are removed first ("Senior", "Sr", "Jr", "II", text in brackets), so "Sr. Pricing Analyst II (Remote)" reads as "pricing analyst". The share of your role's words that appear in the job title is the result, and the full phrase appearing in it counts as a complete match. "Senior Analyst, Pricing" fully matches "Pricing Analyst". "Pricing Manager" matches half of it.</li>
-<li><b>Occupation.</b> Both titles are looked up in O*NET, the U.S. Department of Labor's occupation database, which lists 40,000+ job titles and the variants people use for them, grouped into about 1,000 occupations. Two titles in the <b>same occupation</b> count fully ("Pricing Specialist" for "Pricing Analyst"), a <b>closely related</b> occupation counts 70%, and a more loosely related one counts 50%. This is how a title with different words can still match.</li>
-</ul>
-
-<h2>Skills (31 points)</h2>
-<p>Skills are read from the job description using a list of about 650 skills and tools, each with its common spellings, so "Excel" and "Microsoft Excel" are the same skill. Your skills are the ones on your Skills page, plus the ones named in your experience descriptions, the same way LinkedIn counts skills it finds elsewhere on your profile.</p>
-<p>Full points need <b>4 matching skills</b>, or all of them if the job names fewer than 4. Fewer matches get a share of the points. If the job names no skill on the list, this part gets half points. The card's detail view lists the skills you have and the ones the job asks for that are not on your profile.</p>
-
-<h2>Level (19 points)</h2>
-<p>The job's level comes from a level word in its title first, then LinkedIn's "Seniority level" line, then the years of experience the description asks for. Yours comes from your latest title, or from your total years of experience.</p>
-<ul><li>Same level: full points. One step apart: 60%. Further apart: 25%, and the detail view warns you.</li>
-<li>Job level unknown: 70%.</li></ul>
-
-<h2>Where it comes from</h2>
-<p>The rules are those of Apply First's job matcher (the same developer), with the parts that need pay and location left out and the rest rescaled to 100. The weights started as a proposal and were tested on 115 hand-graded resume and job pairs: putting the title first ranked the good jobs higher than putting skills first.</p>
-<p>The methods themselves are standard. Mapping title variants to one occupation is what O*NET's alternate titles, Europe's ESCO and LinkedIn's own title standardization do. Counting skills you share with a job is what LinkedIn's Skills Match shows. The exact split of 50 / 31 / 19 is First In's choice, not an industry standard.</p>
-
-<h2>Known limits</h2>
-<ul>
-<li>Titles are matched in English. A French or Spanish title gets its title points from words only, so it often scores low.</li>
-<li>An occupation can be broad. O*NET puts pricing analysts with financial analysts, so "Financial Analyst" counts fully for a "Pricing Analyst".</li>
-<li>A shared generic word, such as "Analyst" or "Manager", gives partial title points.</li>
-<li>Skills reach full points at 4 matches, so long skill lists don't push a job higher.</li>
-<li>Soft skills ("communication", "leadership") count like any other skill when both sides name them, which makes them easy matches. They are left out of the <i>Improve your LinkedIn</i> suggestions.</li>
-<li>Your profile is read only when you press <i>Read my profile again</i>, so new skills don't count until then.</li>
-</ul>
-<p>If a score looks wrong, the detail view shows the three parts. Typing the roles you are aiming for in <i>Match profile</i> is the biggest single fix. Tell us at mirow.bek@gmail.com.</p>
-</main><footer><div class="wrap">Not affiliated with, endorsed by or sponsored by LinkedIn Corporation. O*NET is a trademark of the U.S. Department of Labor; O*NET data is used under CC BY 4.0.</div></footer></body></html>
+<!doctype html>
+<!-- First In moved to applyfirst.app on 2026-11-18. GitHub Pages cannot send a 301, so every old page is a stub:
+     a canonical link (for search engines), a meta refresh and a JS redirect that keeps ?query and #hash
+     (old installs open bye.html?v=<version> on uninstall, and the version must reach the new form). -->
+<html lang="en"><head><meta charset="utf-8">
+<title>First In has moved to applyfirst.app</title>
+<link rel="canonical" href="https://applyfirst.app/match/">
+<meta name="robots" content="noindex, follow">
+<meta http-equiv="refresh" content="0; url=https://applyfirst.app/match/">
+<script>location.replace('https://applyfirst.app/match/' + location.search + location.hash);</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+</head><body style="font-family:system-ui,sans-serif;padding:24px">
+<p>First In has moved to <a href="https://applyfirst.app/match/">applyfirst.app/match/</a>.</p>
+</body></html>
